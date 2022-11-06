@@ -1,0 +1,28 @@
+package conectaPg;
+
+public class Setor {
+	
+	
+	private int codigo;
+	
+	private String nomedep;
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getNomedep() {
+		return nomedep;
+	}
+
+	public void setNomedep(String nomedep) {
+		this.nomedep = nomedep;
+	}
+	
+	
+
+}

@@ -1,0 +1,59 @@
+package padaria;
+
+import conectaPg.Produto;
+
+public class Principal {
+	
+	
+	public static void main(String[] args) {
+		
+		
+		while (true) {
+			
+			System.out.println("\n**********************************************");
+			System.out.println("*                PADARIA BDII                *");
+			System.out.println("**********************************************");
+			System.out.println("1. Cadastrar produto");
+			System.out.println("2. Listar produtos");
+			System.out.println("3. Atualizar estoque de produto");
+			System.out.println("4. Deletar produto");
+			System.out.println("5. Cadastar Funcionário");
+			System.out.println("6. Listar Funcionários");
+			System.out.println("7. Alterar salário de Funcionário");
+			System.out.println("8. Retirar cadastro de um funcionário");
+			System.out.println("9. Cadastrar Venda");
+			System.out.println("10. Alterar valor da venda");
+			System.out.println("11. Listar vendas");
+			System.out.println("12. Deletar venda");
+			System.out.println("13. Sair");
+			System.out.println("");
+			System.out.print("Digite a sua opção: ");
+			int opcao = Teclado.leInt();
+			
+			
+			if (opcao == 1) { // cadastrar produto
+				System.out.print("Digite o codigo: ");
+				int codigo = Teclado.leInt();
+				System.out.print("Digite o nome: ");
+				String nome = Teclado.leString();
+				System.out.print("Digite a categoria: ");
+				String categoria = Teclado.leString();
+				System.out.print("Digite a quantidade em estoque: ");
+				int qtdEstoque = Teclado.leInt();
+				System.out.print("Digite o preço: ");
+				double preco = Teclado.leDouble();
+
+				Produto prod = new Produto(codigo, nome, categoria, qtdEstoque, preco);
+				
+				cadastrarProduto(Produto prod);
+}
+}}}
+
+
+
+
+
+
+
+
+

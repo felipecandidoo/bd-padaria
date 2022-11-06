@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\anace\OneDrive\Área de Trabalho\Banco de dados\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+1991655398.index
+3130848060.index

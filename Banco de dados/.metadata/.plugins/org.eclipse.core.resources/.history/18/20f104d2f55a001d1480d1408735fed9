@@ -1,0 +1,20 @@
+package conectaPg;
+
+public class Funcionario {
+	
+	
+	private int matricula;
+
+	private String nome;
+
+	private String endereco;
+
+	private int setor; //relativo a Depto
+
+	private String sexo;
+
+	private double salario;
+
+	
+
+}

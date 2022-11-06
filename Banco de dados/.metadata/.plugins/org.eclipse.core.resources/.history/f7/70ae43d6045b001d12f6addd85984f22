@@ -1,0 +1,31 @@
+package padaria;
+
+
+public class Principal {
+	
+	
+	public static void main(String[] args) {
+		
+		
+		while (true) {
+			System.out.println("1. Cadastrar produto");
+			System.out.println("2. Listar produtos");
+			System.out.println("3. Atualizar estoque de produto");
+			System.out.println("4. Deletar produto");
+			System.out.println("5. Cadastar Funcionário");
+			System.out.println("6. Listar Funcionários");
+			System.out.println("7. Alterar salário de Funcionário");
+			System.out.println("8. Retirar cadastro de um funcionário");
+			System.out.println("9. Cadastrar Venda");
+			System.out.println("10. Alterar valor da venda");
+			System.out.println("11. Listar vendas");
+			System.out.println("12. Deletar venda");
+			System.out.println("13. Sair");
+			System.out.println("");
+			System.out.print("Digite a sua opção: ");
+			int opcao = Teclado.leInt();
+		
+		
+
+}
+}}

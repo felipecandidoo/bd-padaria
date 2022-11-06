@@ -1,0 +1,16 @@
+package conectaPg;
+
+public class Venda {
+	
+	
+	private int codigoV;
+
+	private Produto prod;
+
+	private Funcionario vendedor;
+
+	private int quantidade;
+	
+	private double precot;
+
+}

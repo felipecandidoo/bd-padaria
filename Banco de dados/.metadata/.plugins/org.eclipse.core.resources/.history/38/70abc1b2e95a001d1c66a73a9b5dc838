@@ -1,0 +1,16 @@
+package conectaPg;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public class FuncionarioDAO {
+	
+	private Connection con;
+	
+	
+	public FuncionarioDAO() throws SQLException, ClassNotFoundException {
+		
+		con = Conecta.criarConexao();
+	}
+
+}

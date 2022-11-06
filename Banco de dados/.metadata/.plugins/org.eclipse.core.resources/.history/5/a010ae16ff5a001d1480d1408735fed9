@@ -1,0 +1,57 @@
+package conectaPg;
+
+public class Venda {
+	
+	
+	private int codigoV;
+
+	private Produto prod;
+
+	private Funcionario vendedor;
+
+	private int quantidade;
+	
+	private double precot;
+
+	public int getCodigoV() {
+		return codigoV;
+	}
+
+	public void setCodigoV(int codigoV) {
+		this.codigoV = codigoV;
+	}
+
+	public Produto getProd() {
+		return prod;
+	}
+
+	public void setProd(Produto prod) {
+		this.prod = prod;
+	}
+
+	public Funcionario getVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(Funcionario vendedor) {
+		this.vendedor = vendedor;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public double getPrecot() {
+		return precot;
+	}
+
+	public void setPrecot(double precot) {
+		this.precot = precot;
+	}
+
+	
+}

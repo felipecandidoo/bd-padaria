@@ -1,0 +1,146 @@
+package conectaPg;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class VendaDAO {
+	
+private Connection con;
+	
+	
+	public VendaDAO() throws SQLException, ClassNotFoundException {
+		
+		con = Conecta.criarConexao();
+	}
+
+	public void cadastrarVenda(Venda venda) {
+
+		String sql = "INSERT INTO venda (codigoV, prod, vendedor, quantidade, dataV) VALUES (?,?,?,?,?)";
+	
+	
+		try { 
+
+			PreparedStatement preparador = con.prepareStatement(sql);
+
+			preparador.setInt(1, venda.getCodigoV());
+
+			preparador.setString(2, venda.getProd());
+			
+			preparador.setInt(3, venda.getVendedor());
+
+			preparador.setInt(4, venda.getQuantidade());
+			
+			preparador.setDate(5, venda.getDataV());			
+			
+			preparador.execute(); 
+
+			preparador.close();
+			
+			System.out.println("Inserção realizada!"); 
+
+			} catch (SQLException e) {
+
+				System.out.println("Erro - " + e.getMessage());
+
+			}
+
+	}
+		
+		
+	public void updateVenda(Venda venda) {
+
+		String sql = "UPDATE venda SET quatidade = ? WHERE codigoP = ?";
+
+		try {
+
+		PreparedStatement preparador = con.prepareStatement(sql);
+
+		preparador.setInt(1, venda.getQuantidade());
+
+		preparador.setInt(2, venda.getCodigoV());
+
+		preparador.execute();
+
+		preparador.close();
+
+		System.out.println("Alteração realizada!");
+
+		} catch (SQLException e) {
+
+		System.out.println("Erro - "+ e.getMessage());
+		
+	
+}
+	}
+	
+	public void deleteVenda (Venda venda) {
+
+		String sql = "DELETE FROM venda WHERE codigoV = ?";
+
+		try {
+
+		PreparedStatement preparador = con.prepareStatement(sql);
+
+		preparador.setInt(1, venda.getCodigoV());
+
+		preparador.execute();
+
+		preparador.close();
+
+		System.out.println("Deleção realizada!");
+
+		} catch (SQLException e) {
+
+		System.out.println("Erro - "+ e.getMessage());
+
+		}
+		}
+	
+	public List<Venda> selectVendas(){
+
+		String sql = "SELECT * FROM vendas";
+
+		List<Venda> lista = new ArrayList<Venda>();
+
+		try {
+
+		PreparedStatement preparador = con.prepareStatement(sql);
+
+		ResultSet resultados = preparador.executeQuery();
+
+		while (resultados.next()) {
+			
+			Venda venda2 = new Venda();
+
+			venda2.setCodigoV(resultados.getInt("codigoV"));
+
+			venda2.setProd(resultados.getString("prod"));
+
+			venda2.setVendedor(resultados.getInt("vendedor"));
+		
+			venda2.setQuantidade(resultados.getInt("quantidade"));
+
+			venda2.setDataV(resultados.getDate("dataV"));
+
+
+		lista.add(venda2);
+
+		} 
+
+		} catch (SQLException e) {
+
+		System.out.println("Erro - " + e.getMessage());
+
+		}
+
+		return lista; 
+
+		} 
+	
+	
+}

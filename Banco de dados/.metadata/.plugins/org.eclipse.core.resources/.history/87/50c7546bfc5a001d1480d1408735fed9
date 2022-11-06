@@ -1,0 +1,54 @@
+package conectaPg;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class ProdutoDAO {
+	
+	private Connection con;
+	
+	
+	public ProdutoDAO() throws SQLException, ClassNotFoundException {
+		
+		con = Conecta.criarConexao();
+	}
+
+	public void cadastrarProduto(Produto prod) {
+
+		String sql = "INSERT INTO produto (codigo, nomeP, categoria, estoque, preco) VALUES (?,?,?,?,?)";
+	
+
+		try { 
+
+			PreparedStatement preparador = con.prepareStatement(sql);
+
+			preparador.setInt(1, prod.getCodigo());
+
+			preparador.setString(2, prod.getNomeP());
+			
+			preparador.setString(3, prod.getCategoria());
+
+			preparador.setInt(4, prod.getEstoque());
+			
+			preparador.setDouble(5, prod.getPreco());			
+			
+			preparador.execute(); 
+
+			preparador.close();
+			
+			System.out.println("Inserção realizada!"); 
+
+			} catch (SQLException e) {
+
+				System.out.println("Erro - " + e.getMessage());
+
+			}
+
+		}
+		
+		
+		
+	
+
+}

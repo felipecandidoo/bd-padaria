@@ -1,0 +1,56 @@
+package conectaPg;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class FuncionarioDAO {
+	
+	private Connection con;
+	
+	
+	public FuncionarioDAO() throws SQLException, ClassNotFoundException {
+		
+		con = Conecta.criarConexao();
+	}
+
+	public void cadastrarFuncionario(Funcionario func) {
+
+		String sql = "INSERT INTO empregado(matricula, nome, endereco, setor, sexo, salario) VALUES (?,?,?,?,?,?)";
+	
+
+		try { 
+
+			PreparedStatement preparador = con.prepareStatement(sql);
+
+			preparador.setInt(1, func.getMatricula());
+
+			preparador.setString(2, func.getNome());
+			
+			preparador.setString(3, func.getEndereco());
+
+			preparador.setInt(4, func.getSetor());
+
+			preparador.setString(5, func.getSexo());
+
+			preparador.setFloat(6, func.getSalario());			
+			
+			preparador.execute(); 
+
+			preparador.close();
+			
+			System.out.println("Inserção realizada!");
+
+			} catch (SQLException e) {
+
+				System.out.println("Erro - " + e.getMessage());
+
+			}
+
+		}
+		
+		
+		
+		
+	
+}

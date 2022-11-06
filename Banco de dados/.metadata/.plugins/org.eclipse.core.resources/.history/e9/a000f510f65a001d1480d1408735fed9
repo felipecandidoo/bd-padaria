@@ -1,0 +1,48 @@
+package conectaPg;
+
+import java.sql.SQLException;
+
+public class TestaFunc {
+
+	public static void main(String[] args) {
+
+		testaInsert();
+	}
+	
+	public static void testaInsert() {
+
+		Funcionario func = new Funcionario();
+
+		//atribuindo valores aos atributos do objeto criado
+
+		func.setMatricula(2345);
+
+		func.setNome("Ana Cecilia");
+
+		func.setEndereco("Avenida Rio Branco");
+
+		func.setSetor(4);
+
+		func.setSexo("F");
+
+		func.setSalario(4000);
+		
+		FuncionarioDAO empDAO = null;
+		
+		try {
+			
+			empDAO = new FuncionarioDAO();
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+			} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
+
+			}
+			
+		empDAO.cadastrarFuncionario(func);
+		}
+}

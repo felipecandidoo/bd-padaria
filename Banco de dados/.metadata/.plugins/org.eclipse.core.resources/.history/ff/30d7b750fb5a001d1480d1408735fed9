@@ -1,0 +1,181 @@
+package conectaPg;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class FuncionarioDAO {
+	
+	private Connection con;
+	
+	
+	public FuncionarioDAO() throws SQLException, ClassNotFoundException {
+		
+		con = Conecta.criarConexao();
+	}
+
+	public void cadastrarFuncionario(Funcionario func) {
+
+		String sql = "INSERT INTO funcionario (matricula, nome, endereco, sexo, cargo, salario) VALUES (?,?,?,?,?,?)";
+	
+
+		try { 
+
+			PreparedStatement preparador = con.prepareStatement(sql);
+
+			preparador.setInt(1, func.getMatricula());
+
+			preparador.setString(2, func.getNome());
+			
+			preparador.setString(3, func.getEndereco());
+
+			preparador.setString(4, func.getSexo());
+			
+			preparador.setString(5, func.getCargo());
+
+			preparador.setDouble(6, func.getSalario());			
+			
+			preparador.execute(); 
+
+			preparador.close();
+			
+			System.out.println("Inserção realizada!"); 
+
+			} catch (SQLException e) {
+
+				System.out.println("Erro - " + e.getMessage());
+
+			}
+
+	}
+		
+		
+	public void updateFuncionario(Funcionario func) {
+
+		String sql = "UPDATE funcionario SET salario = ? WHERE matricula = ?";
+
+		try {
+
+		PreparedStatement preparador = con.prepareStatement(sql);
+
+		preparador.setDouble(1, func.getSalario());
+
+		preparador.setInt(2, func.getMatricula());
+
+		preparador.execute();
+
+		preparador.close();
+
+		System.out.println("Alteração realizada!");
+
+		} catch (SQLException e) {
+
+		System.out.println("Erro - "+ e.getMessage());
+		
+	
+}
+	}
+	
+	public void deleteFuncionario (Funcionario func) {
+
+		String sql = "DELETE FROM empregado WHERE matricula = ?";
+
+		try {
+
+		PreparedStatement preparador = con.prepareStatement(sql);
+
+		preparador.setInt(1, func.getMatricula());
+
+		preparador.execute();
+
+		preparador.close();
+
+		System.out.println("Deleção realizada!");
+
+		} catch (SQLException e) {
+
+		System.out.println("Erro - "+ e.getMessage());
+
+		}
+		}
+	
+	public List<Empregado> selectTodos(){
+
+		String sql = "SELECT * FROM empregado";
+
+		List<Empregado> lista = new ArrayList<Empregado>();
+
+		//necessário usar um ArrayList pra retornar as informações
+
+		try {
+
+		PreparedStatement preparador = con.prepareStatement(sql);
+
+		ResultSet resultados = preparador.executeQuery();
+
+		/*Para este exemplo, preparador não precisou ser ‘preparado’
+		porque não havia condicionais sobre ele, bastou então chamar
+		o método que executa uma consulta: executeQuery() */
+
+		while (resultados.next()) {
+
+		//enquanto existirem dados cadastrados, execute
+
+		//processa linha por linha do que foi retornado pela query
+
+		Na classe EmpregadoDAO
+
+		JDBC – Exibir resultado de
+		SELECT
+
+		Empregado emp2 = new Empregado();
+
+		/* pegar os dados lidos e jogar na variável emp2, para
+		ficar no modelo OO, com o qual o Java trabalha */
+
+		emp2.setMatricula(resultados.getInt("matricula"));
+
+		/* dentro do getInt() deve ser passado o nome do
+		atributo igual ao que está na tebela do Banco de Dados*/
+
+		// o processo é repetido para cada atributo da tabela
+
+		emp2.setNome(resultados.getString("nome"));
+
+		emp2.setEndereco(resultados.getString("endereco"));
+
+		emp2.setSupervisor(resultados.getInt("supervisor"));
+
+		emp2.setDepartamento(resultados.getInt("depto"));
+
+		emp2.setSexo(resultados.getString("sexo"));
+
+		emp2.setSalario(resultados.getFloat("salario"));
+
+		//continua no próximo slide
+
+		/* depois de salvar num objeto os dados de uma
+		tupla, é preciso adicionar essas informações à lista
+		que será retornada */
+
+		lista.add(emp2);
+
+		} //fim do while
+
+		} catch (SQLException e) {
+
+		System.out.println("Erro - " + e.getMessage());
+
+		}
+
+		return lista; //retornando a lista com todos os dados
+
+		} //fim do método selectTodos()
+	
+	
+	
+	
+	
+	
+	
+}
