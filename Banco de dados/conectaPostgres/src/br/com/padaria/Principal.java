@@ -3,6 +3,8 @@ package br.com.padaria;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Random;
 import java.util.UUID;
 
@@ -63,6 +65,7 @@ public class Principal {
 			ProdutoDAO prodDAO = new ProdutoDAO();
 			FuncionarioDAO funcDAO = new FuncionarioDAO();
 			VendaDAO vendaDAO = new VendaDAO();
+			
 
 // ********************************** PRODUTO **** *********************************
 			if (opcao == 1) {
@@ -83,15 +86,15 @@ public class Principal {
 				prodDAO.cadastrarProduto(prod);
 
 			} else if (opcao == 2) {
-				System.out.println("+-------------------------------------------------------------------------------------------+");
-				System.out.println("| ID                    NOME                 CATEGORIA                ESTOQUE          PREÇO|");
-				System.out.println("+-------------------------------------------------------------------------------------------+");
+				System.out.println("+---------------------------------------------------------------------------------------------+");
+				System.out.println("| ID                    NOME                 CATEGORIA                ESTOQUE          PREÇO  |");
+				System.out.println("+---------------------------------------------------------------------------------------------+");
 				
 				for (Produto prod : prodDAO.selectprodutos()) {
-					System.out.printf("| %-21d%-21s%-30s%-10d%-16f |", prod.getCodigo(), prod.getNomeP(), prod.getCategoria(), prod.getEstoque(), prod.getPreco());
+					System.out.printf("| %-21d%-21s%-28s%-13d%.2f |", prod.getCodigo(), prod.getNomeP(), prod.getCategoria(), prod.getEstoque(), prod.getPreco());
 					System.out.println();
 				}
-				System.out.println("+-------------------------------------------------------------------------------------------+");
+				System.out.println("+---------------------------------------------------------------------------------------------+");
 
 
 //				for (Produto prod : prodDAO.selectprodutos()) {
