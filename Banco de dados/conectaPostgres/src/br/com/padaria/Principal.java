@@ -91,7 +91,7 @@ public class Principal {
 				System.out.println("+---------------------------------------------------------------------------------------------+");
 				
 				for (Produto prod : prodDAO.selectprodutos()) {
-					System.out.printf("| %-21d%-21s%-28s%-13d%.2f |", prod.getCodigo(), prod.getNomeP(), prod.getCategoria(), prod.getEstoque(), prod.getPreco());
+					System.out.printf("| %-21d%-21s%-28s%-17d%.2f |", prod.getCodigo(), prod.getNomeP(), prod.getCategoria(), prod.getEstoque(), prod.getPreco());
 					System.out.println();
 				}
 				System.out.println("+---------------------------------------------------------------------------------------------+");
@@ -168,13 +168,16 @@ public class Principal {
 			}
 // ********************************** VENDAS ***************************************
 			else if (opcao == 9) {
+				System.out.println("+---------------------------------------------------------------------------------------------+");
+				System.out.println("| ID                    NOME                 CATEGORIA                ESTOQUE          PREÇO  |");
+				System.out.println("+---------------------------------------------------------------------------------------------+");
+				
+				for (Produto prod : prodDAO.selectprodutos()) {
+					System.out.printf("| %-21d%-21s%-28s%-17d%.2f |", prod.getCodigo(), prod.getNomeP(), prod.getCategoria(), prod.getEstoque(), prod.getPreco());
+					System.out.println();
+				}
+				System.out.println("+---------------------------------------------------------------------------------------------+");
 
-//				for (Produto prod : prodDAO.selectprodutos()) {
-//					System.out.println("CODIGO: " + prod.getCodigo() + " | NOME: " + prod.getNomeP() + ""
-//							+ " | CATEGORIA: " + prod.getCategoria() + " | ESTOQUE: " + prod.getEstoque() + " "
-//							+ " | PREÇO: " + prod.getPreco());
-//				}
-//
 				System.out.print("Digite o codigo do produto que deseja comprar: ");
 				int cod = Teclado.leInt();
 				System.out.print("Digite a quantidade que deseja comprar: ");
@@ -188,9 +191,8 @@ public class Principal {
 				
 				vendaDAO.cadastrarVenda(venda);
 
-//??????????????????????????
 			} else if (opcao == 10) {
-				// alterar venda??
+				System.out.println("Não é possivel alterar a venda, para isso a nota precisa ser cancelada!!");
 			} else if (opcao == 11) {
 				for (Venda venda : vendaDAO.selectVendas()) {
 					System.out.println("CODIGO: " + venda.getCodigoV() + " | PRODUTO: " + venda.getProd() + ""
