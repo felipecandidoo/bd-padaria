@@ -16,27 +16,48 @@ import br.com.padaria.model.Venda;
 public class Principal {
 
 	public static void main(String[] args) throws Exception, SQLException {
+		
+		System.out.println("+------------------------------------------------------+");
+		System.out.println("|               PADARIA BDII                           |");
+		System.out.println("+------------------------------------------------------+");
 
 		while (true) {
-
-			System.out.println("\n**********************************************");
-			System.out.println("*                PADARIA BDII                *");
-			System.out.println("**********************************************");
-			System.out.println("1. Cadastrar produto");
-			System.out.println("2. Listar produtos");
-			System.out.println("3. Atualizar estoque de produto");
-			System.out.println("4. Deletar produto");
-			System.out.println("5. Cadastar Funcion�rio");
-			System.out.println("6. Listar Funcion�rios");
-			System.out.println("7. Alterar sal�rio de Funcion�rio");
-			System.out.println("8. Retirar cadastro de um funcion�rio");
-			System.out.println("9. Cadastrar Venda");
-			System.out.println("10. Alterar valor da venda");
-			System.out.println("11. Listar vendas");
-			System.out.println("12. Deletar venda");
-			System.out.println("13. Sair");
-			System.out.println("");
-			System.out.print("Digite a sua op��o: ");
+			
+			
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("| 1. Cadastrar Produto                                 |");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("| 2. Listar Produto                                    |");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("| 3. Atualizar estoque de produto                      |");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("| 4. Deletar produto                                   |");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("| 5. Cadastar Funcionario                              |");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("| 6. Listar Funcionarios                               |");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("| 7. Alterar salario de Funcionario                    |");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("| 8. Retirar cadastro de um funcionario                |");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("| 9. Cadastrar Venda                                   |");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("| 10. Alterar valor da venda                           |");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("| 11. Listar vendas                                    |");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("| 12. Deletar venda                                    |");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("+------------------------------------------------------+");
+			System.out.println("| 13. Sair                                             |");
+			System.out.println("+------------------------------------------------------+");
+		
+			System.out.print("Digite a sua opção: ");
 			int opcao = Teclado.leInt();
 
 			ProdutoDAO prodDAO = new ProdutoDAO();
@@ -62,12 +83,22 @@ public class Principal {
 				prodDAO.cadastrarProduto(prod);
 
 			} else if (opcao == 2) {
-
+				System.out.println("+-------------------------------------------------------------------------------------------+");
+				System.out.println("| ID                    NOME                 CATEGORIA                ESTOQUE          PREÇO|");
+				System.out.println("+-------------------------------------------------------------------------------------------+");
+				
 				for (Produto prod : prodDAO.selectprodutos()) {
-					System.out.println("CODIGO: " + prod.getCodigo() + " | NOME: " + prod.getNomeP() + ""
-							+ " | CATEGORIA: " + prod.getCategoria() + " | ESTOQUE: " + prod.getEstoque() + " "
-							+ " | PREÇO: " + prod.getPreco());
+					System.out.printf("| %-21d%-21s%-30s%-10d%-16f |", prod.getCodigo(), prod.getNomeP(), prod.getCategoria(), prod.getEstoque(), prod.getPreco());
+					System.out.println();
 				}
+				System.out.println("+-------------------------------------------------------------------------------------------+");
+
+
+//				for (Produto prod : prodDAO.selectprodutos()) {
+//					System.out.println("CODIGO: " + prod.getCodigo() + " | NOME: " + prod.getNomeP() + ""
+//							+ " | CATEGORIA: " + prod.getCategoria() + " | ESTOQUE: " + prod.getEstoque() + " "
+//							+ " | PREÇO: " + prod.getPreco());
+//				}
 
 			} else if (opcao == 3) {
 

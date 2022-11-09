@@ -31,7 +31,7 @@ public class Venda {
 	}
 
 	public int getCodigoV() {
-		return codigoV;
+		return this.codigoV;
 	}
 
 	public void setCodigoV(int codigoV) {
@@ -55,7 +55,7 @@ public class Venda {
 	}
 
 	public int getQuantidade() {
-		return quantidade;
+		return this.quantidade;
 	}
 
 	public void setQuantidade(int quantidade) {

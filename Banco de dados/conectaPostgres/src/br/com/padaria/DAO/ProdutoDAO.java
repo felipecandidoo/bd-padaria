@@ -120,7 +120,7 @@ public class ProdutoDAO {
 			
 			Produto prod2 = new Produto();
 
-			prod2.setCodigo(resultados.getInt("cogido"));
+			prod2.setCodigo(resultados.getInt("codigo"));
 
 			prod2.setNomeP(resultados.getString("nomeP"));
 

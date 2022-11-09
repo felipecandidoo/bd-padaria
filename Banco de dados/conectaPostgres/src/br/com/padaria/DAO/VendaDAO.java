@@ -57,7 +57,7 @@ private Connection con;
 	
 	public void updateVenda(Venda venda) {
 
-		String sql = "UPDATE venda SET quantidade = ? WHERE codigoP = ?";
+		String sql = "UPDATE venda SET quantidade = ? WHERE prod = ?";
 
 		try {
 
