@@ -1,0 +1,149 @@
+package br.com.padaria.DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.padaria.connection.Conecta;
+import br.com.padaria.model.Venda;
+
+public class VendaDAO {
+	
+private Connection con;
+	
+	
+	public VendaDAO() throws SQLException, ClassNotFoundException {
+		
+		con = Conecta.criarConexao();
+	}
+
+	public void cadastrarVenda(Venda venda) {
+
+		String sql = "INSERT INTO venda (codigoV, prod, vendedor, quantidade, dataV) VALUES (?,?,?,?,?)";
+	
+		try { 
+
+			PreparedStatement preparador = con.prepareStatement(sql);
+
+			preparador.setInt(1, venda.getCodigoV());
+
+			preparador.setInt(2, venda.getProd());
+			
+			preparador.setInt(3, venda.getVendedor());
+
+			preparador.setInt(4, venda.getQuantidade());
+			
+			preparador.setDate(5, venda.getDataV());			
+			
+			preparador.execute(); 
+
+			preparador.close();
+			
+		
+			
+			System.out.println("Inser  o realizada!"); 
+			
+			} catch (SQLException e) {
+
+				System.out.println("Erro - " + e.getMessage());
+
+			}
+
+	}
+		
+	
+	public void updateVenda(Venda venda) {
+
+		String sql = "UPDATE venda SET quantidade = ? WHERE prod = ?";
+
+		try {
+
+		PreparedStatement preparador = con.prepareStatement(sql);
+
+		preparador.setDouble(1, venda.getQuantidade());
+
+		preparador.setInt(2, venda.getCodigoV());
+
+		preparador.execute();
+
+		preparador.close();
+
+		System.out.println("Altera  o realizada!");
+
+		} catch (SQLException e) {
+
+		System.out.println("Erro - "+ e.getMessage());
+		
+	
+}
+	}
+	
+	public void deleteVenda (int codV) {
+
+		String sql = "DELETE FROM venda WHERE codigoV = ?";
+
+		try {
+
+		PreparedStatement preparador = con.prepareStatement(sql);
+
+		preparador.setInt(1, codV );
+
+		preparador.execute();
+
+		preparador.close();
+
+		System.out.println("Dele  o realizada!");
+
+		} catch (SQLException e) {
+
+		System.out.println("Erro - "+ e.getMessage());
+
+		}
+		}
+	
+	public List<Venda> selectVendas(){
+
+		String sql = "SELECT * FROM vendas";
+
+		List<Venda> lista = new ArrayList<Venda>();
+
+		try {
+
+		PreparedStatement preparador = con.prepareStatement(sql);
+
+		ResultSet resultados = preparador.executeQuery();
+
+		while (resultados.next()) {
+			
+			Venda venda2 = new Venda();
+
+			venda2.setCodigoV(resultados.getInt("codigoV"));
+
+			venda2.setProd(resultados.getInt("prod"));
+
+			venda2.setVendedor(resultados.getInt("vendedor"));
+		
+			venda2.setQuantidade(resultados.getInt("quantidade"));
+
+			venda2.setDataV(resultados.getDate("dataV"));
+
+
+		lista.add(venda2);
+
+		} 
+
+		} catch (SQLException e) {
+
+		System.out.println("Erro - " + e.getMessage());
+
+		}
+
+		return lista; 
+
+		} 
+	
+	
+}

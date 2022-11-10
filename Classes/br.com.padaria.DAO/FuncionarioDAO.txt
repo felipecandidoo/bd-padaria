@@ -45,7 +45,7 @@ public class FuncionarioDAO {
 
 			preparador.close();
 			
-			System.out.println("Inser��o realizada!"); 
+			System.out.println("Inser  o realizada!"); 
 
 			} catch (SQLException e) {
 
@@ -72,7 +72,7 @@ public class FuncionarioDAO {
 
 		preparador.close();
 
-		System.out.println("Altera��o realizada!");
+		System.out.println("Altera  o realizada!");
 
 		} catch (SQLException e) {
 
@@ -84,7 +84,7 @@ public class FuncionarioDAO {
 	
 	public void deleteFuncionario (int mat) {
 
-		String sql = "DELETE FROM funcionario WHERE matricula = ?";
+		String sql = "DELETE FROM empregado WHERE matricula = ?";
 
 		try {
 
@@ -96,7 +96,7 @@ public class FuncionarioDAO {
 
 		preparador.close();
 
-		System.out.println("Dele��o realizada!");
+		System.out.println("Dele  o realizada!");
 
 		} catch (SQLException e) {
 

@@ -78,7 +78,7 @@ public class Principal {
 				String categoria = Teclado.leString();
 				System.out.print("Digite a quantidade em estoque: ");
 				int qtdEstoque = Teclado.leInt();
-				System.out.print("Digite o pre�o: ");
+				System.out.print("Digite o pre o: ");
 				double preco = Teclado.leDouble();
 
 				Produto prod = new Produto(codigo, nome, categoria, qtdEstoque, preco);
@@ -178,8 +178,6 @@ public class Principal {
 				}
 				System.out.println("+---------------------------------------------------------------------------------------------+");
 
-				System.out.print("Digite a matricula do vendedor: ");
-				int func = Teclado.leInt();
 				System.out.print("Digite o codigo do produto que deseja comprar: ");
 				int cod = Teclado.leInt();
 				System.out.print("Digite a quantidade que deseja comprar: ");
@@ -189,7 +187,7 @@ public class Principal {
 				
 				Random gerador = new Random();
 				
-				Venda venda = new Venda(gerador.nextInt(), cod, func, qtd, data);
+				Venda venda = new Venda(gerador.nextInt(), cod, 2345, qtd, data);
 				
 				vendaDAO.cadastrarVenda(venda);
 
